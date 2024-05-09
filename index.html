@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <title>JavaScript Calculator</title>
+  </head>
+  <body>
+    <section class="main">
+      <div class="section-container">
+        <div class="calculator">
+          <div class="displayDiv">
+            <input type="text" id="display" disabled />
+          </div>
+          <div id="buttons">
+            <button onclick="clearDisplay()" class="btnGroup-1">AC</button>
+            <button onclick="deleteChar()" class="btnGroup-1">DEL</button>
+            <button onclick="appendOperator('.')" class="btnGroup-2">.</button>
+            <button onclick="appendOperator('/')" class="btnGroup-2">/</button>
+            <button onclick="appendChar('7')">7</button>
+            <button onclick="appendChar('8')">8</button>
+            <button onclick="appendChar('9')">9</button>
+            <button onclick="appendOperator('*')" class="btnGroup-2">*</button>
+            <button onclick="appendChar('4')">4</button>
+            <button onclick="appendChar('5')">5</button>
+            <button onclick="appendChar('6')">6</button>
+            <button onclick="appendOperator('-')" class="btnGroup-2">-</button>
+            <button onclick="appendChar('1')">1</button>
+            <button onclick="appendChar('2')">2</button>
+            <button onclick="appendChar('3')">3</button>
+            <button onclick="appendOperator('+')" class="btnGroup-2">+</button>
+            <button onclick="appendChar('0')" class="btnGroup-3">0</button>
+            <button onclick="appendChar('00')" class="btnGroup-3">00</button>
+            <button onclick="calculate()" class="span-two-columns btnGroup-4">
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./js/calculator.js" type="text/javascript"></script>
+  </body>
+</html>

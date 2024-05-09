@@ -1,0 +1,154 @@
+/* CSS Default Behaviour Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition: none;
+  }
+}
+
+body,
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom CSS Starts */
+body {
+  margin: 0 auto;
+  background-color: #230042;
+}
+
+/* Section Container */
+.section-container {
+  border: 1px solid gray;
+  background-color: #013c79;
+  margin: 10rem auto;
+  width: max-content;
+  border-radius: 5px;
+}
+
+/* Buttons Group */
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+/* Equal Button */
+.span-two-columns {
+  grid-column: span 2;
+}
+
+/* Calculator Container */
+.calculator {
+  background-color: #0e0e34;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: max-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Display box */
+#display {
+  padding: 1rem;
+  background-color: #1f827f;
+  margin: 1rem 0;
+  border: 0px solid #000;
+  border-radius: 5px;
+  text-align: right;
+  font-size: x-large;
+  font-family: monospace;
+  font-weight: 500;
+  color: #fff;
+  width: 100%;
+}
+
+/* Button */
+button {
+  padding: 1rem;
+  border: 0;
+  border-radius: 5px;
+  background-color: #400000;
+  color: #fff;
+  font-size: large;
+  font-weight: 500;
+  font-family: monospace;
+  cursor: pointer;
+  transition: filter 0.3 ease;
+}
+
+/* Button When Clicked */
+button:active {
+  filter: brightness(75%);
+  transform: scale(0.95);
+}
+
+/* Button Color Groups */
+.btnGroup-1 {
+  background-color: #80080c;
+}
+
+.btnGroup-2 {
+  background-color: #e6a54a;
+}
+
+.btnGroup-3 {
+  background-color: #298379;
+}
+
+.btnGroup-4 {
+  background-color: #006242;
+}
