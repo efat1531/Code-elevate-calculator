@@ -33,12 +33,14 @@ function deleteChar() {
       display.value = "0";
       fullDisplayValue = "0";
     }
+  } else if (display.value === "Infinity" || display.value.includes("ERROR")) {
+    clearDisplay();
   }
 }
 
 // appendChar() appends a character to the display
 function appendChar(char) {
-  if (display.value !== "Error" && display.value !== "Infinity") {
+  if (display.value !== "Infinity" && !display.value.includes("ERROR")) {
     if (
       display.value === "0" &&
       fullDisplayValue === "0" &&
@@ -67,7 +69,7 @@ function appendChar(char) {
 
 // appendOperator() appends an operator to the display
 function appendOperator(char) {
-  if (display.value !== "Error" && display.value !== "Infinity") {
+  if (display.value !== "Infinity" && !display.value.includes("ERROR")) {
     const lastChar = display.value.slice(-1);
     const operators = ["+", "-", "*", "/", "."];
     if (!operators.includes(lastChar)) {
@@ -85,15 +87,21 @@ function appendOperator(char) {
 // calculate() calculates the value on the display
 function calculate() {
   try {
-    let result = eval(fullDisplayValue);
+    let result = math.evaluate(fullDisplayValue);
+    console.log(result);
+    if (isNaN(result)) {
+      throw new Error("Math ERROR");
+    }
     let resultStr = result.toString();
 
     if (resultStr.length > 20) {
       if (Number.isInteger(result)) {
-        display.value = "Error";
+        throw new Error("Mem ERROR");
       } else {
         let precision = 20 - (resultStr.split(".")[0].length + 1);
-        precision = precision < 0 ? 0 : precision;
+        if (precision < 0) {
+          throw new Error("Mem ERROR");
+        }
         display.value = result.toFixed(precision);
       }
     } else {
@@ -103,8 +111,13 @@ function calculate() {
     calculated = true;
     previousValue = display.value;
     fullDisplayValue = display.value;
-  } catch {
-    display.value = "Error";
-    previousValue = "Error";
+  } catch (error) {
+    if (error instanceof Error) {
+      display.value = error.message;
+      previousValue = error.message;
+    } else {
+      display.value = "Syntax ERROR";
+      previousValue = "Syntax ERROR";
+    }
   }
 }
