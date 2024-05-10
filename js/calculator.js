@@ -51,6 +51,11 @@ function appendChar(char) {
       display.value = "";
       fullDisplayValue = "";
     }
+    if (calculated && char >= "1" && char <= "9") {
+      display.value = "";
+      fullDisplayValue = "";
+      previousValue = null;
+    }
     if (
       (char === "00" || char === "0") &&
       display.value === "0" &&
