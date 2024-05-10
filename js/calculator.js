@@ -82,8 +82,11 @@ function appendOperator(char) {
     } else if (
       operators.includes(lastChar) &&
       char !== lastChar &&
-      char === "-"
+      char === "-" &&
+      lastChar != "."
     ) {
+      appendChar(char);
+    } else if (lastChar !== "." && char === ".") {
       appendChar(char);
     }
   }
