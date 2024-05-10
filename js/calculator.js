@@ -87,32 +87,37 @@ function appendOperator(char) {
 // calculate() calculates the value on the display
 function calculate() {
   try {
+    console.log(fullDisplayValue);
+    if (/[+\-*/]$/g.test(fullDisplayValue)) {
+      throw new Error("Syntax ERROR");
+    }
     let result = math.evaluate(fullDisplayValue);
     console.log(result);
     if (isNaN(result)) {
       throw new Error("Math ERROR");
     }
     let resultStr = result.toString();
-
+    let val;
     if (resultStr.length > 20) {
       if (Number.isInteger(result)) {
-        throw new Error("Mem ERROR");
+        val = result.toExponential();
       } else {
         let precision = 20 - (resultStr.split(".")[0].length + 1);
         if (precision < 0) {
-          throw new Error("Mem ERROR");
+          val = val = Number(result.toPrecision(20));
+        } else {
+          val = result.toFixed(precision);
         }
-        display.value = result.toFixed(precision);
       }
     } else {
-      display.value = resultStr;
+      val = resultStr;
     }
-
+    display.value = val;
     calculated = true;
     previousValue = display.value;
     fullDisplayValue = display.value;
   } catch (error) {
-    if (error instanceof Error) {
+    if (error.message === "Math ERROR") {
       display.value = error.message;
       previousValue = error.message;
     } else {
