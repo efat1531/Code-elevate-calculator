@@ -75,7 +75,7 @@ body {
 .section-container {
   border: 1px solid gray;
   background-color: #013c79;
-  margin: 10rem auto;
+  margin: auto auto;
   width: max-content;
   border-radius: 5px;
 }

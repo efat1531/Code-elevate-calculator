@@ -33,7 +33,7 @@ function deleteChar() {
       display.value = "0";
       fullDisplayValue = "0";
     }
-  } else if (display.value === "Infinity" || display.value.includes("ERROR")) {
+  } else {
     clearDisplay();
   }
 }
